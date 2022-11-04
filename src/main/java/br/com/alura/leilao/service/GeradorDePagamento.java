@@ -1,5 +1,6 @@
 package br.com.alura.leilao.service;
 
+import java.time.Clock;
 import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,10 @@ public class GeradorDePagamento {
 
 	@Autowired
 	private PagamentoDao pagamentos;
+
+	public GeradorDePagamento(PagamentoDao pagamentos, Clock clock) {
+		this.pagamentos = pagamentos;
+	}
 
 	public void gerarPagamento(Lance lanceVencedor) {
 		LocalDate vencimento = LocalDate.now().plusDays(1);
